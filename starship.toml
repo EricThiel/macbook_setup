@@ -1,0 +1,107 @@
+format = """
+[╭](#ffffff) $os (fg:#ffffff)$username$directory$python$all $fill ${custom.giturl}$git_branch$git_state$git_status$cmd_duration$aws$time(#ffffff)$line_break$character"""
+ 
+#right_format = """$aws"""
+
+palette = 'custom'
+
+[palettes.custom]
+foreground = '#F8F8F2'
+background = '#282A36'
+current_line = '#44475A'
+primary = '#1E1F29'
+box = '#44475A'
+#yellow = '#F1FA8C'
+red	= '#FF5555'
+user_fg = "#3a9efd"
+dir_bg = '#FF79C6'
+py_bg = '#8BE9FD'
+venv_fg = "#50FA7B"
+git_bg = '#6272A4'
+repo_fg = '#8BE9FD'
+aws_bg = '#348052'
+dur_bg = '#FFB86C'
+time_bg = '#BD93F9'
+
+[os]
+format = "$symbol"
+disabled = false
+
+[os.symbols]
+Macos = ''
+
+[username]
+format = '[$user](fg:user_fg)'
+show_always = true
+
+[directory]
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+repo_root_style = 'fg:bold repo_fg bg:box'
+before_repo_root_style = "fg:#ebdbb2 bg:box"
+repo_root_format = ' [](fg:dir_bg)[󰷏 ](fg:primary bg:dir_bg)[](fg:dir_bg bg:box)[ $read_only$truncation_symbol$before_root_path[$repo_root]($repo_root_style)$path](fg:foreground bg:box)[](fg:box)'
+format = ' [](fg:dir_bg)[󰷏 ](fg:primary bg:dir_bg)[](fg:dir_bg bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+style = "fg:#ffffff bg:#3a9efd"
+
+[python]
+format = '[─](fg:current_line)[](fg:py_bg)[$symbol](fg:primary bg:py_bg)[](fg:py_bg bg:box)[ $version](fg:foreground bg:box)[( \($virtualenv\))](fg:venv_fg bg:box)[](fg:box)'
+symbol = ' '
+
+[fill]
+symbol = ' '
+
+[custom.giturl]
+# disabled = true
+description = "Display symbol for remote Git server"
+command = """
+GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+else
+    GIT_REMOTE_SYMBOL=" "
+fi
+echo "$GIT_REMOTE_SYMBOL "
+"""
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+shell = ["bash", "--noprofile", "--norc"]
+format = "([](fg:git_bg)[$output  ](fg:primary bg:git_bg))"
+
+[git_branch]
+format = '[$symbol](fg:primary bg:git_bg)[](fg:git_bg bg:box)[ $branch](fg:foreground bg:box)'
+symbol = ''
+
+[git_state]
+format ="[$state( $progress_current/$progress_total)](bg:box) "
+symbol = ''
+
+[git_status]
+format = "[( \\[$all_status$ahead_behind\\])](fg:bold red bg:box)[](fg:box)[─](fg:current_line)"
+symbol = ''
+
+[cmd_duration]
+min_time = 500
+format = '[─](fg:current_line)[](fg:dur_bg)[ ](fg:primary bg:dur_bg)[](fg:dur_bg bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+
+[aws]
+format = '([─](fg:current_line)[](fg:aws_bg)[$symbol](fg:#FFFFFF bg:aws_bg)[](fg:aws_bg bg:box)[ $region](fg:foreground bg:box)[](fg:box))'
+symbol = '󰅟 '
+
+[time]
+format = '[─](fg:current_line)[](fg:time_bg)[󰦖 ](fg:primary bg:time_bg)[](fg:time_bg bg:box)[ $time](fg:foreground bg:box)[](fg:box)'
+time_format = '%H:%M'
+disabled = false
+
+[character]
+success_symbol = "[╰─❯](#ffffff)"
+error_symbol = "[╰─×](#ff0000)"
+
+
+
+
