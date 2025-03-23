@@ -1,5 +1,8 @@
 Repo to keep track of new macbook setup including fish shell and spaceship, as well as other useful tools
 
+# install Homebrew
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
 # install ghostty
 `brew install ghostty`
 
