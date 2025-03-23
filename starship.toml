@@ -101,10 +101,10 @@ format = "[( \\[$all_status$ahead_behind\\])](fg:bold red bg:box)[](fg:box)[�
 
 [cmd_duration]
 min_time = 500
-format = '[─](fg:current_line)[](fg:dur_bg)[ ](fg:primary bg:dur_bg)[](fg:dur_bg bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:dur_bg)[ ](fg:primary bg:dur_bg)[](fg:dur_bg bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)[─](fg:current_line)'
 
 [aws]
-format = '([─](fg:current_line)[](fg:aws_bg)[$symbol](fg:#FFFFFF bg:aws_bg)[](fg:aws_bg bg:box)[ $region](fg:foreground bg:box)[](fg:box))'
+format = '([](fg:aws_bg)[$symbol](fg:#FFFFFF bg:aws_bg)[](fg:aws_bg bg:box)[ $region](fg:foreground bg:box)[](fg:box))'
 symbol = '󰅟 '
 
 [time]

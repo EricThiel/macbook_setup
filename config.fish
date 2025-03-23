@@ -31,5 +31,7 @@ if type -q trash
   abbr --add -g rm 'trash'
 end
 
+abbr -a -g exi exit
+
 # Run starship
 starship init fish | source
