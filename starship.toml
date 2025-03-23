@@ -1,5 +1,19 @@
 format = """
-[╭](#ffffff) $os (fg:#ffffff)$username$directory$python$all $fill ${custom.giturl}$git_branch$git_state$git_status$cmd_duration$aws$time(#ffffff)$line_break$character"""
+[╭](#ffffff) \
+$os (fg:#ffffff)\
+$custom\
+$username\
+$directory\
+$python\
+$all \
+$fill \
+${custom.giturl}$git_branch$git_state$git_status\
+$cmd_duration\
+$aws\
+$time(#ffffff)\
+$line_break\
+[╰─](#ffffff)\
+$character"""
  
 #right_format = """$aws"""
 
@@ -79,11 +93,11 @@ symbol = ''
 
 [git_state]
 format ="[$state( $progress_current/$progress_total)](bg:box) "
-symbol = ''
+#symbol = ''
 
 [git_status]
 format = "[( \\[$all_status$ahead_behind\\])](fg:bold red bg:box)[](fg:box)[─](fg:current_line)"
-symbol = ''
+#symbol = ''
 
 [cmd_duration]
 min_time = 500
@@ -99,9 +113,23 @@ time_format = '%H:%M'
 disabled = false
 
 [character]
-success_symbol = "[╰─❯](#ffffff)"
-error_symbol = "[╰─×](#ff0000)"
+success_symbol = "[❯](#ffffff)"
+error_symbol = "[×](#ff0000)"
 
+[custom.zsh]
+command = "echo 🚀"
+when = """ test "$STARSHIP_SHELL" "==" "zsh" """
+format = "$output"
+
+[custom.bash]
+command = "echo  " 
+when = """ test "$STARSHIP_SHELL" "==" "bash" """
+format = "$output"
+
+[custom.fish]
+command = "echo 🐟 "
+when = """ test "$STARSHIP_SHELL" = "fish" """
+format = "$output"
 
 
 
