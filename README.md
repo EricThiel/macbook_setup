@@ -23,8 +23,9 @@ cp starship.toml ~/.config/starship.toml
 ```
 fish_add_path "/opt/homebrew/bin/"
 fisher install jethrokuan/z
-fisher install zzhaolei/transient.fish
 fisher install patrickf1/fzf.fish
+fisher install zzhaolei/transient.fish
 
 fish_update_completions
 ```
+
