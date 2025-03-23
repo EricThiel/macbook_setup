@@ -10,10 +10,12 @@ Repo to keep track of new macbook setup including fish shell and spaceship, as w
 `brew install starship fish eza bat trash nvim btop fisher fzf`
 
 # Set up fish config
-```mkdir ~/.config
+```
+mkdir ~/.config
 mkdir ~/.config/fish
 cp config.fish ~/.config/fish/config.fish
-cp starship.toml ~/.config/starship.toml```
+cp starship.toml ~/.config/starship.toml
+```
 
 # Run fish
 `fish`
