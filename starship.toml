@@ -31,6 +31,8 @@ user_fg = "#3a9efd"
 dir_bg = '#FF79C6'
 py_bg = '#8BE9FD'
 venv_fg = "#50FA7B"
+node_bg = '#F1FA8C'
+pkg_bg = '#571d1d'
 git_bg = '#6272A4'
 repo_fg = '#8BE9FD'
 aws_bg = '#348052'
@@ -58,9 +60,21 @@ repo_root_format = ' [](fg:dir_bg)[󰷏 ](fg:primary bg:dir_bg)[](fg:dir_b
 format = ' [](fg:dir_bg)[󰷏 ](fg:primary bg:dir_bg)[](fg:dir_bg bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
 style = "fg:#ffffff bg:#3a9efd"
 
+#[directory.substitutions]
+#"Documents" = "󰈙 "
+#"Downloads" = " "
+#"Music" = " "
+#"Pictures" = " "
+
 [python]
 format = '[─](fg:current_line)[](fg:py_bg)[$symbol](fg:primary bg:py_bg)[](fg:py_bg bg:box)[ $version](fg:foreground bg:box)[( \($virtualenv\))](fg:venv_fg bg:box)[](fg:box)'
 symbol = ' '
+
+[nodejs]
+format = '[─](fg:current_line)[](fg:node_bg)[$symbol](fg:primary bg:node_bg)[](fg:node_bg bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[package]
+format = '[─](fg:current_line)[](fg:pkg_bg)[$symbol](fg:primary bg:pkg_bg)[](fg:pkg_bg bg:box)[ $version](fg:foreground bg:box)[](fg:box)' #($style) '
 
 [fill]
 symbol = ' '
