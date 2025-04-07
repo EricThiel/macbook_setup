@@ -32,3 +32,8 @@ fisher install zzhaolei/transient.fish
 fish_update_completions
 ```
 
+# Set fish as default shell once you are happy with the config
+```
+echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
+```

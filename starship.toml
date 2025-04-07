@@ -5,9 +5,10 @@ $custom\
 $username\
 $directory\
 $python\
+${custom.giturl}$git_branch$git_state$git_status\
 $all \
 $fill \
-${custom.giturl}$git_branch$git_state$git_status\
+$battery\
 $cmd_duration\
 $aws\
 $time(#ffffff)\
@@ -18,6 +19,7 @@ $character"""
 #right_format = """$aws"""
 
 palette = 'custom'
+command_timeout = 3600
 
 [palettes.custom]
 foreground = '#F8F8F2'
@@ -37,6 +39,7 @@ git_bg = '#6272A4'
 repo_fg = '#8BE9FD'
 aws_bg = '#348052'
 dur_bg = '#FFB86C'
+batt_bg = '#3285a8'
 time_bg = '#BD93F9'
 
 [os]
@@ -99,7 +102,7 @@ echo "$GIT_REMOTE_SYMBOL "
 """
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 shell = ["bash", "--noprofile", "--norc"]
-format = "([](fg:git_bg)[$output  ](fg:primary bg:git_bg))"
+format = "([─](fg:current_line)[](fg:git_bg)[$output  ](fg:primary bg:git_bg))"
 
 [git_branch]
 format = '[$symbol](fg:primary bg:git_bg)[](fg:git_bg bg:box)[ $branch](fg:foreground bg:box)'
@@ -110,7 +113,7 @@ format ="[$state( $progress_current/$progress_total)](bg:box) "
 #symbol = ''
 
 [git_status]
-format = "[( \\[$all_status$ahead_behind\\])](fg:bold red bg:box)[](fg:box)[─](fg:current_line)"
+format = "[( \\[$all_status$ahead_behind\\])](fg:bold red bg:box)[](fg:box)"#[─](fg:current_line)"
 #symbol = ''
 
 [cmd_duration]
@@ -118,11 +121,11 @@ min_time = 500
 format = '[](fg:dur_bg)[ ](fg:primary bg:dur_bg)[](fg:dur_bg bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)[─](fg:current_line)'
 
 [aws]
-format = '([](fg:aws_bg)[$symbol](fg:#FFFFFF bg:aws_bg)[](fg:aws_bg bg:box)[ $region](fg:foreground bg:box)[](fg:box))'
+format = '([](fg:aws_bg)[$symbol](fg:#FFFFFF bg:aws_bg)[](fg:aws_bg bg:box)[ $region](fg:foreground bg:box)[](fg:box)[─](fg:current_line))'
 symbol = '󰅟 '
 
 [time]
-format = '[─](fg:current_line)[](fg:time_bg)[󰦖 ](fg:primary bg:time_bg)[](fg:time_bg bg:box)[ $time](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:time_bg)[󰦖 ](fg:primary bg:time_bg)[](fg:time_bg bg:box)[ $time](fg:foreground bg:box)[](fg:box)'
 time_format = '%H:%M'
 disabled = false
 
@@ -145,5 +148,10 @@ command = "echo 🐟 "
 when = """ test "$STARSHIP_SHELL" = "fish" """
 format = "$output"
 
+#[battery]
+#format = '([](fg:batt_bg)[$symbol](fg:red bg:batt_bg)[](fg:batt_bg bg:box)[](fg:box)[─](fg:current_line))'
+#format = '([](fg:batt_bg)[$symbol](fg:red bg:batt_bg)[](fg:batt_bg bg:box)[region](fg:foreground bg:box)[](fg:box)[─](fg:current_line))'
 
+[[battery.display]]
+threshold = 75
 
